@@ -34,6 +34,16 @@ Since the full feature set of the app is never described, I decided to keep the 
 
 After deciding to use one table, I spent some time considering Candidate Keys. Both *vim* and *item number* should be unique fields and therefore qualify as natural keys. If I picked one as the primary key, the table would not meet the criteria of 3NF, because there would be a functional dependency on the candidate key I didn't pick. On the other hand, combining the fields into a compound key would not meet 2NF, because uniqueness can be determined by either field. After reading a few articles (see references section), I decided to use an artificial auto-incrementing key. The benefits of this approach are it insures uniqueness even if *vim* or *item number* need to be changed and it is normalized to 2NF. The downside is the approach does not meet 3NF.
 
+###RESTful API
+
+The setup and code for the api was straight forward. I used Node.js with the Express.js framework. Since the React app only requests information, the api consists of one GET endpoint. The `api/car/:carid` endpoint requires a
+car id as a parameter and returns the associated car details.
+
+I used a library called pg-promise to query the database. As the name implies, the library uses promises to handle async database action.
+
+The server also hosts the font-end files at the root and in development will
+log HTTP requests to the console.
+
 ##Resources
 
 * [Normalization of Database](http://www.studytonight.com/dbms/database-normalization.php)
@@ -41,4 +51,4 @@ After deciding to use one table, I spent some time considering Candidate Keys. B
 * [Choosing a Primary Key: Natural or Surrogate?](http://www.agiledata.org/essays/keys.html)
 * [How I Write SQL, Part 1: Naming Conventions](https://launchbylunch.com/posts/2014/Feb/16/sql-naming-conventions/)
 * [PostgreSQL 9.6 Docs](https://www.postgresql.org/docs/9.6/static/index.html)
-* 
+*
