@@ -7,17 +7,22 @@ module.exports = {
   entry: path.resolve(__dirname, 'src/public/js/index.jsx'),
   output: {
     path: path.resolve(__dirname, 'src/public/build'),
-    filename: filename.join('.'),
+    filename: filename.join('.')
   },
   devtool: 'source-map',
   module: {
-    loaders: [{
-      test: /\.jsx?$/,
-      exclude: /(node_modules)/,
-      loader: 'babel',
-    }],
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel',
+        query: {
+          presets: ['es2015', 'stage-0', 'react'],
+        },
+      },
+    ],
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
-  },
+    extensions: ['', '.js', '.jsx']
+  }
 };

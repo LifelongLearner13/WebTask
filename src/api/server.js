@@ -1,5 +1,6 @@
 /* ---- Dependencies ---- */
 const express = require('express');
+const path = require('path');
 const logger = require('morgan');
 const db = require('./pgp');
 
@@ -9,9 +10,9 @@ const app = express();
 if (!process.env.DEVELOPMENT) {
   app.use(logger('dev')); // log every HTTP request to the console
 }
-
+console.log(__dirname + '/../public/build/');
 // Serves the frontend code at the root
-app.use(express.static('../public/build/'));
+app.use('/', express.static(__dirname + '/../public/build/'));
 
 /* ---- RESTful Endpoint ---- */
 
