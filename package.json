@@ -4,8 +4,26 @@
   "description": "Project assessment for TangoCode's Junior Software Engineer position.",
   "main": "src/api/server.js",
   "scripts": {
-    "dev": "nodemon src/api/server.js",
-    "test": "psql test_webtask < src/api/webtask_schema.sql &> /dev/null && DEVELOPMENT=testing mocha --compilers js:babel-register tests/*/*.js*"
+    "start": "node src/api/server.js",
+    "dev": "nodemon src/api/server.js & npm run watch",
+    "localtest": "createdb test_webtask && psql test_webtask < src/api/webtask_schema.sql &> /dev/null && mocha --compilers js:babel-register test/*/*.js*; dropdb test_webtask",
+    "test": "psql test_webtask < src/api/webtask_schema.sql &> /dev/null && DEVELOPMENT=testing mocha --compilers js:babel-register tests/*/*.js*",
+    "mkdir": "mkdir -p src/public/build",
+    "build": "npm run clean && npm run mkdir && npm run build:html && npm run build:css && npm run build:img && npm run build:js",
+    "watch": "npm run watch:html & npm run watch:css & npm run watch:img & npm run watch:js",
+    "clean": "rm -rf src/public/build",
+    "build:html": "npm run clean:html && cp src/public/index.html src/public/build/",
+    "watch:html": "npm run build:html && chokidar src/public/index.html -c 'npm run build:html'",
+    "clean:html": "rm -f public/build/index.html",
+    "build:css": "npm run clean:css && lessc --source-map src/public/css/index.less src/public/build/$npm_package_name.$npm_package_version.css",
+    "watch:css": "npm run build:css && chokidar 'src/public/css/**/*.less' -c 'npm run build:css'",
+    "clean:css": "rm -f src/public/build/$npm_package_name.$npm_package_version.css",
+    "build:js": "npm run clean:js && webpack",
+    "watch:js": "npm run build:js && webpack --watch",
+    "clean:js": "rm -f src/public/build/$npm_package_name.$npm_package_version.js",
+    "build:img": "npm run clean:img && cp -r src/public/img/ src/public/build/img/",
+    "clean:img": "rm -rf src/public/build/img/",
+    "watch:img": "npm run build:img && webpack --watch"
   },
   "repository": {
     "type": "git",

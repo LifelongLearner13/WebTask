@@ -10,6 +10,9 @@ if (!process.env.DEVELOPMENT) {
   app.use(logger('dev')); // log every HTTP request to the console
 }
 
+// Serves the frontend code at the root
+app.use(express.static('../public/build/'));
+
 /* ---- RESTful Endpoint ---- */
 
 /*
