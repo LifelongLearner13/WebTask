@@ -9,7 +9,7 @@ CREATE TABLE "car" (
   min_price MONEY NOT NULL,
   max_price MONEY NOT NULL,
   mileage DECIMAL NOT NULL,
-  cylinders INTEGER,
+  cylinders VARCHAR(25) NOT NULL,
   city_mpg INTEGER,
   highway_mpg INTEGER,
   engine DECIMAL,

@@ -39,10 +39,16 @@ After deciding to use one table, I spent some time considering Candidate Keys. B
 The setup and code for the api was straight forward. I used Node.js with the Express.js framework. Since the React app only requests information, the api consists of one GET endpoint. The `api/car/:carid` endpoint requires a
 car id as a parameter and returns the associated car details.
 
-I used a library called pg-promise to query the database. As the name implies, the library uses promises to handle async database action.
+I used a library called pg-promise to query the database. As the name implies, the library uses promises to handle async database actions.
 
 The server also hosts the font-end files at the root and in development will
 log HTTP requests to the console.
+
+I used the Mocha framework and chai assertion library to write a basic test for the endpoint. I choose this testing setup because I used it during my web development bootcamp.
+
+##React Front-end
+
+ 
 
 ##Resources
 
