@@ -21504,6 +21504,10 @@
 
 	'use strict';
 	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(1);
@@ -21549,7 +21553,7 @@
 	  _createClass(CarDetail, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      window.addEventListener('resize', this.handleWindowSizeChange);
+	      window.addEventListener('resize', this.handleWindowSizeChange.bind(this));
 	    }
 	
 	    // Remove listener when component is removed
@@ -21557,7 +21561,7 @@
 	  }, {
 	    key: 'componentWillUnmount',
 	    value: function componentWillUnmount() {
-	      window.removeEventListener('resize', this.handleWindowSizeChange);
+	      window.removeEventListener('resize', this.handleWindowSizeChange.bind(this));
 	    }
 	  }, {
 	    key: 'handleWindowSizeChange',
@@ -21567,18 +21571,31 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement(
-	        'p',
-	        null,
-	        'It Works!'
-	      );
+	      var width = this.state.width;
+	
+	      var isMobile = width <= 500;
+	
+	      if (isMobile) {
+	        return _react2.default.createElement(
+	          'p',
+	          null,
+	          'Mobile: ',
+	          this.state.width
+	        );
+	      } else {
+	        return _react2.default.createElement(
+	          'p',
+	          null,
+	          this.state.width
+	        );
+	      }
 	    }
 	  }]);
 	
 	  return CarDetail;
 	}(_react2.default.Component);
 	
-	module.exports = CarDetail;
+	exports.default = CarDetail;
 
 /***/ }
 /******/ ]);

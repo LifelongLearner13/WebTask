@@ -8,25 +8,25 @@ import React from 'react';
  * desktop layouts with React" by Gosha Arinich
  * https://goshakkk.name/different-mobile-desktop-tablet-layouts-react/
 */
-class CarDetail extends React.Component {
+export default class CarDetail extends React.Component {
   constructor(props) {
     // Pass props to parent class
     super(props);
 
     // Set initial state
     this.state = {
-      width: window.innerWidth,
+      width: window.innerWidth
     };
   }
 
   // Add listener to detect window resizing
   componentWillMount() {
-    window.addEventListener('resize', this.handleWindowSizeChange);
+    window.addEventListener('resize', this.handleWindowSizeChange.bind(this));
   }
 
   // Remove listener when component is removed
   componentWillUnmount() {
-    window.removeEventListener('resize', this.handleWindowSizeChange);
+    window.removeEventListener('resize', this.handleWindowSizeChange.bind(this));
   }
 
   handleWindowSizeChange() {
@@ -34,10 +34,17 @@ class CarDetail extends React.Component {
   }
 
   render() {
-    return (
-      <p>It Works!</p>
-    );
+    const { width } = this.state;
+    const isMobile = width <= 500;
+
+    if (isMobile) {
+      return (
+        <p>Mobile: {this.state.width}</p>
+      );
+    } else {
+      return (
+        <p>{this.state.width}</p>
+      );
+    }
   }
 }
-
-module.exports = CarDetail;

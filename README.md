@@ -48,7 +48,7 @@ I used the Mocha framework and chai assertion library to write a basic test for 
 
 ##React Front-end
 
- 
+
 
 ##Resources
 
@@ -57,4 +57,4 @@ I used the Mocha framework and chai assertion library to write a basic test for 
 * [Choosing a Primary Key: Natural or Surrogate?](http://www.agiledata.org/essays/keys.html)
 * [How I Write SQL, Part 1: Naming Conventions](https://launchbylunch.com/posts/2014/Feb/16/sql-naming-conventions/)
 * [PostgreSQL 9.6 Docs](https://www.postgresql.org/docs/9.6/static/index.html)
-*
+* [Different mobile and desktop layouts with React](https://goshakkk.name/different-mobile-desktop-tablet-layouts-react/) by Gosha Arinich

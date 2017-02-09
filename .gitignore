@@ -60,3 +60,6 @@ typings/
 
 # Image Editing
 *.acorn
+
+# Build Files
+src/public/build/*
