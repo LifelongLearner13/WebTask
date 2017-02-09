@@ -21518,6 +21518,14 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
+	/*
+	 * Main component for the WebTask app. Since the app is so small,
+	 * all state is managed from this component.
+	 *
+	 * Browser resizing code was taken from "Different mobile and
+	 * desktop layouts with React" by Gosha Arinich
+	 * https://goshakkk.name/different-mobile-desktop-tablet-layouts-react/
+	*/
 	var CarDetail = function (_React$Component) {
 	  _inherits(CarDetail, _React$Component);
 	
@@ -21529,11 +21537,34 @@
 	    // Pass props to parent class
 	
 	
-	    _this.state = {};
+	    _this.state = {
+	      width: window.innerWidth
+	    };
 	    return _this;
 	  }
 	
+	  // Add listener to detect window resizing
+	
+	
 	  _createClass(CarDetail, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      window.addEventListener('resize', this.handleWindowSizeChange);
+	    }
+	
+	    // Remove listener when component is removed
+	
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      window.removeEventListener('resize', this.handleWindowSizeChange);
+	    }
+	  }, {
+	    key: 'handleWindowSizeChange',
+	    value: function handleWindowSizeChange() {
+	      this.setState({ width: window.innerWidth });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(

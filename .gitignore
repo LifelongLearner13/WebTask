@@ -57,3 +57,6 @@ typings/
 
 # Operating System
 .DS_Store
+
+# Image Editing
+*.acorn
