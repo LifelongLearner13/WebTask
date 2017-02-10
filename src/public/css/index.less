@@ -19,7 +19,7 @@
 .heading1, .heading2, .heading3,
 .heading4, .heading5, .heading6,
 .heading7, .heading8, .heading9,
-.heading10 {
+.heading10, .call-us {
   font-family: 'Helvetica Neue', Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
@@ -38,6 +38,7 @@
 
 .heading3 {
   font-size: 18px;
+  color: @light-gray;
 }
 
 .heading4 {
@@ -125,6 +126,14 @@ body {
   }
 }
 
+.space-between {
+  justify-content: space-between;
+}
+
+.center {
+  justify-content: center;
+}
+
 .green-text {
   color: @light-green;
 }
@@ -137,6 +146,10 @@ body {
   @media (max-width: 500px) {
     display: none;
   }
+}
+
+.medium-margin {
+  margin: 40px 0 10px 0;
 }
 
 /* ----- Navbar ----- */
@@ -260,4 +273,82 @@ main {
   color: @white;
   position: absolute;
   z-index: 1;
+  width: 100%;
+  padding: 0 130px;
+  top: 260px;
 }
+
+.summary-list {
+  padding: 0 40px;
+  width: 480px;
+  height: 266px;
+  background-color: @white;
+  margin-bottom: 40px;
+  text-align: left;
+
+  &:first-of-type {
+    margin-right: 8px;
+  }
+
+  @media (max-width: 500px) {
+    margin: 0;
+
+
+    &:last-of-type {
+      margin: 16px 0;
+    }
+  }
+}
+
+.summary-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.summary-table tr:not(:first-child) {
+  border-top: 1px solid @light-gray;
+}
+
+.call-us, .call-us:visited {
+  background-color: @light-green;
+  color: @white;
+  text-decoration: none;
+  padding: 20px;
+  width: 100%;
+  margin: 8px 0;
+  text-align: center;
+}
+
+.call-us:hover, .call-us:active{
+  background-color: @dark-green;
+}
+
+footer {
+  background-color: @black;
+  padding: 24px;
+  color: @light-gray;
+  text-align: center;
+}
+
+footer ul {
+  margin-bottom: 30px;
+}
+
+footer ul li {
+  display: inline-block;
+  position: relative;
+  padding: 0 10px;
+  margin: 0 5px;
+}
+
+footer ul li:not(:last-child):after {
+  content: '/';
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  font-size: 24px;
+}
+
+footer ul li a {
+  color: @light-gray;
+}s

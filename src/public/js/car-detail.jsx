@@ -61,7 +61,6 @@ export default class CarDetail extends React.Component {
       return content.json();
     })
     .then((car) => {
-      console.log(car)
       this.setState({ car, isLoading: false });
     })
     .catch((error) => {
@@ -97,8 +96,8 @@ export default class CarDetail extends React.Component {
             highwaympg, engine } = this.state.car;
     const content = {
       Cylinders: cylinders,
-      'City MPG': citympg,
-      'HighWay MPG': highwaympg,
+      'City MPG': `${citympg} MPG`,
+      'HighWay MPG': `${highwaympg} MPG`,
       Engine: engine,
     };
 
@@ -141,11 +140,11 @@ export default class CarDetail extends React.Component {
             />
             <CallUs />
             <SummaryList
-              title="Extrior"
+              title="EXTRIOR"
               content={content}
             />
             <SummaryList
-              title="Performance"
+              title="PERFORMANCE"
               content={content}
             />
           </main>
@@ -198,13 +197,13 @@ export default class CarDetail extends React.Component {
               isClickable={!isMobile}
               handlePictureClick={this.handlePictureClick}
             />
-            <div className="row">
+            <div className="row center">
               <SummaryList
-                title="Extrior"
+                title="EXTRIOR"
                 content={content}
               />
               <SummaryList
-                title="Performance"
+                title="PERFORMANCE"
                 content={content}
               />
             </div>

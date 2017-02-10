@@ -14,7 +14,7 @@ export default function CallUs() {
           <a href="/">Privacy Policy</a>
         </li>
       </ul>
-      <p>Copy right notice</p>
+      <p className="heading9">Copy right notice</p>
     </footer>
   );
 }

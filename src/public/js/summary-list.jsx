@@ -3,19 +3,23 @@ import React from 'react';
 export default function SummaryList(props) {
   const items = Object.keys(props.content).map((key, i) => {
     return (
-      <li key={i}>
-        <h4>{key}</h4>
-        <h4>{props.content[key]}</h4>
-      </li>
+      <tr className="" key={i}>
+        <td>
+          <h4 className="heading3">{key}</h4>
+        </td>
+        <td>
+          <h4 className="heading4">{props.content[key]}</h4>
+        </td>
+      </tr>
     );
   });
 
   return (
-    <div>
-      <h4>{props.title}</h4>
-      <ul>
+    <div className="summary-list">
+      <h4 className="heading4 medium-margin">{props.title}</h4>
+      <table className="summary-table">
         {items}
-      </ul>
+      </table>
     </div>
   );
 }
