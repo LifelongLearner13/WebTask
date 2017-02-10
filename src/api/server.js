@@ -10,9 +10,9 @@ const app = express();
 if (!process.env.DEVELOPMENT) {
   app.use(logger('dev')); // log every HTTP request to the console
 }
-console.log(__dirname + '/../public/build/');
+
 // Serves the frontend code at the root
-app.use('/', express.static(__dirname + '/../public/build/'));
+app.use('/', express.static(path.join(__dirname, '/../public/build/')));
 
 /* ---- RESTful Endpoint ---- */
 
@@ -23,7 +23,11 @@ app.use('/', express.static(__dirname + '/../public/build/'));
 app.get('/api/car/:carid', (request, response) => {
   const carID = request.params.carid;
 
-  db.one('SELECT * FROM car WHERE id=$1;', carID)
+  db.one(`SELECT id, car_name AS carName, city_mpg AS cityMpg, cylinders,
+            engine, highway_mpg AS highwayMpg, item_number AS itemNumber,
+            max_price AS maxPrice, mileage, min_price AS minPrice,
+            release_year AS releaseYear, saves, shares, views, vin
+          FROM car WHERE id=$1;`, carID)
   .then((car) => { response.json(car); })
   .catch((error) => {
     console.error('ERROR:', error.message || error);

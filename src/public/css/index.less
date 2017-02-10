@@ -1,5 +1,9 @@
 @import "reset";
 
+/* ----- Main Break Point -----*/
+@breakPoint: 500;
+
+
 /* ---- Colors ----- */
 @light-green: #3FB34A;
 @dark-green: #106838;
@@ -22,6 +26,7 @@
 .heading1 {
   font-weight: bold;
   font-size: 36px;
+  margin: 40px 0 28px 0;
 }
 
 .heading2 {
@@ -35,11 +40,13 @@
 .heading4 {
   font-weight: bold;
   font-size: 18px;
+  margin: 8px 0 16px 0;
 }
 
 .heading5 {
   font-weight: 500;
   font-size: 14px;
+  color: @light-gray;
 }
 
 .heading6 {
@@ -49,6 +56,7 @@
 .heading7 {
   font-weight: 500;
   font-size: 12px;
+  margin: 30px 0;
 }
 
 .heading8 {
@@ -86,6 +94,21 @@ body {
   clear: both;
 }
 
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.space-around {
+  justify-content: space-between;
+  text-align: center;
+}
+
+.green-text {
+  color: @light-green;
+}
+
 /* ----- Navbar ----- */
 nav {
   background-color: @black;
@@ -106,7 +129,6 @@ ul.tab-list {
   display: inline-flex;
   flex-direction: row;
   align-items: center;
-
 }
 
 ul.tab-list > li {
@@ -120,7 +142,7 @@ ul.tab-list > li {
     top: 0;
     left: -15px;
     content: '';
-    border-left: 1px solid @white;
+    border-left: 1px solid @dark-gray;
     display: block;
     width: 15px;
     height: 56px;
@@ -132,3 +154,37 @@ ul.tab-list > li {
 }
 
 /* ----- Main Content Area ----- */
+
+main {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.single-image {
+  width: 728px;
+  height: 432px;
+  object-fit: cover;
+}
+
+.summary {
+  width: 296px;
+  height: 432px;
+  padding: 0 40px;
+  background-color: @white;
+}
+
+.col-2 {
+  margin-top: 16px;
+}
+
+.icon-margin {
+  margin-left: 5px;
+}
+
+.summary a {
+  color: @black;
+}
+
+.small-bottom-margin {
+  margin-bottom: 8px;
+}

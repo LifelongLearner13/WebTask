@@ -61,6 +61,7 @@ export default class CarDetail extends React.Component {
       return content.json();
     })
     .then((car) => {
+      console.log(car)
       this.setState({ car, isLoading: false });
     })
     .catch((error) => {
@@ -87,17 +88,17 @@ export default class CarDetail extends React.Component {
     const isMobile = width <= 500;
 
     // Assign variables to make the JSX more readable
-    const { itemNumber, vin,
-            carName, releaseYear,
-            minPrice, maxPrice,
+    const { itemnumber, vin,
+            carname, releaseyear,
+            minprice, maxprice,
             mileage, views,
             saves, shares,
-            cylinders, city_mpg,
-            highway_mpg, engine } = this.state.car;
+            cylinders, citympg,
+            highwaympg, engine } = this.state.car;
     const content = {
       Cylinders: cylinders,
-      'City MPG': city_mpg,
-      'HighWay MPG': highway_mpg,
+      'City MPG': citympg,
+      'HighWay MPG': highwaympg,
       Engine: engine,
     };
 
@@ -129,10 +130,10 @@ export default class CarDetail extends React.Component {
             <Summary
               itemNumber={itemNumber}
               vin={vin}
-              carName={carName}
-              releaseYear={releaseYear}
-              minPrice={minPrice}
-              maxPrice={maxPrice}
+              carName={carname}
+              releaseYear={releaseyear}
+              minPrice={minprice}
+              maxPrice={maxprice}
               mileage={mileage}
               views={views}
               saves={saves}
@@ -175,34 +176,38 @@ export default class CarDetail extends React.Component {
             </ul>
           </Navbar>
           <main className="clear">
-            <SingleImage
-              picture={largeImage}
-            />
-            <Summary
-              itemNumber={itemNumber}
-              vin={vin}
-              carName={carName}
-              releaseYear={releaseYear}
-              minPrice={minPrice}
-              maxPrice={maxPrice}
-              mileage={mileage}
-              views={views}
-              saves={saves}
-              shares={shares}
-            />
+            <div className="row">
+              <SingleImage
+                picture={largeImage}
+              />
+              <Summary
+                itemNumber={itemnumber}
+                vin={vin}
+                carName={carname}
+                releaseYear={releaseyear}
+                minPrice={minprice}
+                maxPrice={maxprice}
+                mileage={mileage}
+                views={views}
+                saves={saves}
+                shares={shares}
+              />
+            </div>
             <ImageGallery
               images={images}
               isClickable={!isMobile}
               handlePictureClick={this.handlePictureClick}
             />
-            <SummaryList
-              title="Extrior"
-              content={content}
-            />
-            <SummaryList
-              title="Performance"
-              content={content}
-            />
+            <div className="row">
+              <SummaryList
+                title="Extrior"
+                content={content}
+              />
+              <SummaryList
+                title="Performance"
+                content={content}
+              />
+            </div>
           </main>
         </div>
       );
