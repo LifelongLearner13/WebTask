@@ -13,6 +13,10 @@ By: Sierra Gregg
 5. Navigate inside the project folder and install dependencies by running `cd WebTask && npm install`
 6. To get a copy of the app running quickly run `npm run dev`, the app will be available at  [http://localhost:5000/](http://localhost:5000/)
 
+##Video Demonstration
+
+A video demonstration of the app working in Chrome, Safari, and Firefox can be found here: [https://youtu.be/EZ91Yha62oE](https://youtu.be/EZ91Yha62oE)
+
 ##Development Environment
 
 The app was developed on a MacBook Pro running macOS Sierra version 10.12.3. In addition to the decencies listed in the `package.json`, the app was developed with:
