@@ -40,9 +40,9 @@ const propTypes = {
   minPrice: React.PropTypes.string,
   maxPrice: React.PropTypes.string,
   mileage: React.PropTypes.string,
-  views: React.PropTypes.string,
-  saves: React.PropTypes.string,
-  shares: React.PropTypes.string,
+  views: React.PropTypes.number,
+  saves: React.PropTypes.number,
+  shares: React.PropTypes.number,
 };
 
 Navbar.propTypes = propTypes;

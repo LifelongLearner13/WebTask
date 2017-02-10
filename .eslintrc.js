@@ -9,5 +9,10 @@ module.exports = {
         "new-cap": [2, { "capIsNewExceptions": ["Router"] }],
         "arrow-body-style": [ "error", "always" ],
         "no-console": [1, { "allow": ["warn", "error"] }]
-    }
+    },
+    "env": {
+      "browser": true,
+      "node": true,
+      "jasmine": true
+    },
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import fetch from 'isomorphic-fetch';
 import Navbar from './navbar';
 import Search from './search';
 import Tab from './tab';
@@ -19,12 +20,13 @@ import Footer from './footer';
 */
 export default class CarDetail extends React.Component {
   constructor(props) {
-    // Pass props to parent class
     super(props);
 
-    // Set initial state
+    // Initial state
     this.state = {
       width: window.innerWidth,
+      isLoading: true,
+      car: {},
     };
   }
 
@@ -33,7 +35,32 @@ export default class CarDetail extends React.Component {
     window.addEventListener('resize', this.handleWindowSizeChange.bind(this));
   }
 
-  // Remove listener when component is removed
+  componentDidMount() {
+    // Since there is only one record, the car id is hard coded
+    const url = `${window.location.origin}/api/car/1`;
+
+    // Use Fetch to make async server called
+    // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
+    fetch(url).then((response) => {
+      if (response.us < 200 || response.us >= 300) {
+        const error = new Error(response.usText);
+        error.responsep = response;
+        throw error;
+      }
+      return response;
+    })
+    .then((content) => {
+      return content.json();
+    })
+    .then((car) => {
+      this.setState({ car, isLoading: false });
+    })
+    .catch((error) => {
+      console.log('Request failed', error);
+    });
+  }
+
+  // Clean up when component is removed
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleWindowSizeChange.bind(this));
   }
@@ -46,15 +73,25 @@ export default class CarDetail extends React.Component {
     const { width } = this.state;
     const isMobile = width <= 500;
 
+    // Assign variables to make the JSX more readable
+    const { itemNumber, vin,
+            carName, releaseYear,
+            minPrice, maxPrice,
+            mileage, views,
+            saves, shares,
+            cylinders, city_mpg,
+            highway_mpg, engine } = this.state.car;
     const images = ['ford1.jpeg', 'ford2.jpeg', 'ford3.jpeg', 'ford4.jpeg', 'ford5.jpeg'];
     const content = {
-      Cylinders: 'L4',
-      'City MPG': '20',
-      'HighWay MPG': '25',
-      Engine: 1.3,
+      Cylinders: cylinders,
+      'City MPG': city_mpg,
+      'HighWay MPG': highway_mpg,
+      Engine: engine,
     };
 
-    if (isMobile) {
+    if (this.state.isLoading) {
+      return <p>Loading...</p>;
+    } else if (isMobile) {
       return (
         <div>
           <Navbar>
@@ -73,16 +110,16 @@ export default class CarDetail extends React.Component {
             images={images}
           />
           <Summary
-            itemNumber="1395P"
-            vin="3GNDA13D96S631406"
-            carName="Ford Focus"
-            releaseYear="2012"
-            minPrice="$8,500.00"
-            maxPrice="$9,000.00"
-            mileage="200000"
-            views="37"
-            saves="20"
-            shares="15"
+            itemNumber={itemNumber}
+            vin={vin}
+            carName={carName}
+            releaseYear={releaseYear}
+            minPrice={minPrice}
+            maxPrice={maxPrice}
+            mileage={mileage}
+            views={views}
+            saves={saves}
+            shares={shares}
           />
           <CallUs />
           <SummaryList
@@ -124,16 +161,16 @@ export default class CarDetail extends React.Component {
               picture="ford1.jpeg"
             />
             <Summary
-              itemNumber="1395P"
-              vin="3GNDA13D96S631406"
-              carName="Ford Focus"
-              releaseYear="2012"
-              minPrice="$8,500.00"
-              maxPrice="$9,000.00"
-              mileage="200000"
-              views="37"
-              saves="20"
-              shares="15"
+              itemNumber={itemNumber}
+              vin={vin}
+              carName={carName}
+              releaseYear={releaseYear}
+              minPrice={minPrice}
+              maxPrice={maxPrice}
+              mileage={mileage}
+              views={views}
+              saves={saves}
+              shares={shares}
             />
             <ImageGallery
               images={images}
