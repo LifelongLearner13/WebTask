@@ -29,11 +29,11 @@ export default function Summary(props) {
             <h4 className="heading5 small-bottom-margin">Views</h4>
             <h4 className="heading2 green-text">{props.views}</h4>
           </div>
-          <div className="no-mobile">
-            <h4 className="heading5 small-bottom-margin no-mobile">Saves</h4>
+          <div className="display-none-mobile ">
+            <h4 className="heading5 small-bottom-margin">Saves</h4>
             <h4 className="heading2 green-text">{props.saves}</h4>
           </div>
-          <div className="no-mobile">
+          <div className="display-none-mobile ">
             <h4 className="heading5 small-bottom-margin">Shares</h4>
             <h4 className="heading2 green-text">{props.shares}</h4>
           </div>

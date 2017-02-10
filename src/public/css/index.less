@@ -129,6 +129,16 @@ body {
   color: @light-green;
 }
 
+.display-none {
+  display: none;
+}
+
+.display-none-mobile {
+  @media (max-width: 500px) {
+    display: none;
+  }
+}
+
 /* ----- Navbar ----- */
 nav {
   background-color: @black;
@@ -216,6 +226,38 @@ main {
   margin-bottom: 8px;
 }
 
-.no-mobile {
-  display: none;
+.gallery {
+  margin: 32px 0 24px 0;
+
+  @media (max-width: 500px) {
+    margin: 0;
+  }
+}
+
+.gallery-thumbnails {
+  width: 201.5px;
+  object-fit: cover;
+  @media (max-width: 500px) {
+    height: 256px;
+    width: 500px;
+  }
+}
+
+.gallery-tiles {
+  margin-right: 4px;
+
+  &:last-child {
+    margin-left: 0;
+  }
+
+  @media (max-width: 500px) {
+    margin: 0;
+    position: relative;
+  }
+}
+
+.position-indicator {
+  color: @white;
+  position: absolute;
+  z-index: 1;
 }
