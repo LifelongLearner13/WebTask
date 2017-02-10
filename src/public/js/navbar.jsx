@@ -3,7 +3,9 @@ import React from 'react';
 export default function Navbar(props) {
   return (
     <nav>
-      {props.children}
+      <div className="float-right">
+        {props.children}
+      </div>
     </nav>
   );
 }

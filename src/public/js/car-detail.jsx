@@ -107,43 +107,47 @@ export default class CarDetail extends React.Component {
       return (
         <div>
           <Navbar>
-            <Tab
-              icon="fa-map-marker"
-              title="Directions to dealer"
-              srText="Directions to dealer"
-            />
-            <Tab
-              icon="fa-phone"
-              title="Call dealer"
-              srText="Call dealer"
-            />
+            <ul className="tab-list">
+              <Tab
+                icon="fa-map-marker"
+                title="Directions to dealer"
+                srText="Directions to dealer"
+              />
+              <Tab
+                icon="fa-phone"
+                title="Call dealer"
+                srText="Call dealer"
+              />
+            </ul>
           </Navbar>
-          <ImageGallery
-            images={images}
-            isClickable={!isMobile}
-            handlePictureClick={this.handlePictureClick}
-          />
-          <Summary
-            itemNumber={itemNumber}
-            vin={vin}
-            carName={carName}
-            releaseYear={releaseYear}
-            minPrice={minPrice}
-            maxPrice={maxPrice}
-            mileage={mileage}
-            views={views}
-            saves={saves}
-            shares={shares}
-          />
-          <CallUs />
-          <SummaryList
-            title="Extrior"
-            content={content}
-          />
-          <SummaryList
-            title="Performance"
-            content={content}
-          />
+          <main className="clear">
+            <ImageGallery
+              images={images}
+              isClickable={!isMobile}
+              handlePictureClick={this.handlePictureClick}
+            />
+            <Summary
+              itemNumber={itemNumber}
+              vin={vin}
+              carName={carName}
+              releaseYear={releaseYear}
+              minPrice={minPrice}
+              maxPrice={maxPrice}
+              mileage={mileage}
+              views={views}
+              saves={saves}
+              shares={shares}
+            />
+            <CallUs />
+            <SummaryList
+              title="Extrior"
+              content={content}
+            />
+            <SummaryList
+              title="Performance"
+              content={content}
+            />
+          </main>
           <Footer />
         </div>
       );
@@ -152,7 +156,7 @@ export default class CarDetail extends React.Component {
         <div>
           <Navbar>
             <Search />
-            <ul>
+            <ul className="tab-list">
               <Tab
                 icon="fa-map-marker"
                 title="Directions to dealer"
@@ -170,7 +174,7 @@ export default class CarDetail extends React.Component {
               />
             </ul>
           </Navbar>
-          <main>
+          <main className="clear">
             <SingleImage
               picture={largeImage}
             />

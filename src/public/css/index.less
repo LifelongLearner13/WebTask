@@ -1,1 +1,134 @@
 @import "reset";
+
+/* ---- Colors ----- */
+@light-green: #3FB34A;
+@dark-green: #106838;
+@gray-background: #EFEFF2;
+@white: #FFFFFF;
+@black: #000000;
+@dark-gray: #343434;
+@light-gray: #9B9B9B;
+@red: #EC4F38;
+@orange: #F88200;
+
+/* ----- Headings ----- */
+.heading1, .heading2, .heading3,
+.heading4, .heading5, .heading6,
+.heading7, .heading8, .heading9,
+.heading10 {
+  font-family: 'Helvetica Neue', Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+.heading1 {
+  font-weight: bold;
+  font-size: 36px;
+}
+
+.heading2 {
+  font-size: 20px;
+}
+
+.heading3 {
+  font-size: 18px;
+}
+
+.heading4 {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.heading5 {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.heading6 {
+  font-size: 14px;
+}
+
+.heading7 {
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.heading8 {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.heading9 {
+  font-weight: 500;
+  font-size: 10px;
+}
+
+/* ----- Global Styles ----- */
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+body {
+  background-color: @gray-background;
+}
+
+.float-right {
+  float: right;
+}
+
+.clear {
+  clear: both;
+}
+
+/* ----- Navbar ----- */
+nav {
+  background-color: @black;
+  height: 56px;
+  overflow: hidden;
+}
+
+nav i {
+  color: @white;
+}
+
+div.search {
+  display: inline-block;
+  margin: 24px 40px 16px 24px;
+}
+
+ul.tab-list {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+
+ul.tab-list > li {
+  display: inline-block;
+  padding: 24px 24px 16px 24px;
+  background-color: @orange;
+  position: relative;
+
+  &:before {
+    background: inherit;
+    top: 0;
+    left: -15px;
+    content: '';
+    border-left: 1px solid @white;
+    display: block;
+    width: 15px;
+    height: 56px;
+    position: absolute;
+    transform: skewX(165deg);
+    transform-origin: bottom left;
+    z-index: 1;
+  }
+}
+
+/* ----- Main Content Area ----- */
