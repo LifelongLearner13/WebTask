@@ -11,7 +11,7 @@ export default function ImageGallery(props) {
       return (
         <li key={i} className="gallery-tiles">
           <img
-            src={'img/' + picture}
+            src={picture}
             onClick={handleClick}
             role="presentation"
             className="gallery-thumbnails"
@@ -23,7 +23,7 @@ export default function ImageGallery(props) {
     content = (
       <div>
         <img
-          src={'img/' + props.images[0]}
+          src={props.images[0]}
           onClick={handleClick}
           role="presentation"
           className="gallery-thumbnails"

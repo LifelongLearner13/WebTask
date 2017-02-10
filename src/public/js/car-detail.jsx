@@ -22,16 +22,12 @@ export default class CarDetail extends React.Component {
   constructor(props) {
     super(props);
 
-    // Temporary until I fix my database mistake
-    const images = ['ford1.jpeg', 'ford2.jpeg', 'ford3.jpeg', 'ford4.jpeg', 'ford5.jpeg'];
-
     // Initial state
     this.state = {
       width: window.innerWidth,
       isLoading: true,
       car: {},
-      images,
-      largeImage: 'img/' + images[1],
+      largeImage: '',
     };
 
     // Ensure this context for callback function
@@ -61,7 +57,8 @@ export default class CarDetail extends React.Component {
       return content.json();
     })
     .then((car) => {
-      this.setState({ car, isLoading: false });
+      console.log(car)
+      this.setState({ car, largeImage: car.images[0], isLoading: false });
     })
     .catch((error) => {
       console.log('Request failed', error);
@@ -83,11 +80,11 @@ export default class CarDetail extends React.Component {
   }
 
   render() {
-    const { width, isLoading, images, largeImage } = this.state;
+    const { width, isLoading, largeImage } = this.state;
     const isMobile = width <= 500;
 
     // Assign variables to make the JSX more readable
-    const { itemnumber, vin,
+    const { itemnumber, vin, images,
             carname, releaseyear,
             minprice, maxprice,
             mileage, views,

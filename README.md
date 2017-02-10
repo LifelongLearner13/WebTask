@@ -10,11 +10,12 @@ By: Sierra Gregg
 2. Start a local Postgres server. This depends on your setup. To manually start a server, run `pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start`
 3. Create the database with `createdb webtask`
 4. Import data into database with `psql webtask < scr/api/webtask_seed.sql`
-2. Navigate inside the project folder and install dependencies by running this commands `cd WebTask && npm install`
+5. Navigate inside the project folder and install dependencies by running `cd WebTask && npm install`
+6. To get a copy of the app running quickly run `npm run dev`, the app will be available at  [http://localhost:5000/](http://localhost:5000/)
 
 ##Development Environment
 
-The app was developed on a MacBook Pro running macOS Sierra version 10.12.3. In addition to the decencies listed in the package.json, the app uses:
+The app was developed on a MacBook Pro running macOS Sierra version 10.12.3. In addition to the decencies listed in the `package.json`, the app was developed with:
 * PostgreSQL v9.6.1
 * npm v4.1.2
 * Node v7.5.0
@@ -58,3 +59,4 @@ I used the Mocha framework and chai assertion library to write a basic test for 
 * [How I Write SQL, Part 1: Naming Conventions](https://launchbylunch.com/posts/2014/Feb/16/sql-naming-conventions/)
 * [PostgreSQL 9.6 Docs](https://www.postgresql.org/docs/9.6/static/index.html)
 * [Different mobile and desktop layouts with React](https://goshakkk.name/different-mobile-desktop-tablet-layouts-react/) by Gosha Arinich
+* [How to Create Skewed Edges With CSS](http://www.hongkiat.com/blog/skewed-edges-css/) by Agus

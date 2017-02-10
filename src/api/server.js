@@ -23,11 +23,14 @@ app.use('/', express.static(path.join(__dirname, '/../public/build/')));
 app.get('/api/car/:carid', (request, response) => {
   const carID = request.params.carid;
 
-  db.one(`SELECT id, car_name AS carName, city_mpg AS cityMpg, cylinders,
+  db.one(`SELECT car.id, car_name AS carName, city_mpg AS cityMpg, cylinders,
             engine, highway_mpg AS highwayMpg, item_number AS itemNumber,
             max_price AS maxPrice, mileage, min_price AS minPrice,
-            release_year AS releaseYear, saves, shares, views, vin
-          FROM car WHERE id=$1;`, carID)
+            release_year AS releaseYear, saves, shares, views, vin,
+            array_agg(picture.path) AS images
+          FROM car JOIN picture ON car.id = picture.car_id
+          WHERE car.id=1
+          GROUP BY car.id;`, carID)
   .then((car) => { response.json(car); })
   .catch((error) => {
     console.error('ERROR:', error.message || error);

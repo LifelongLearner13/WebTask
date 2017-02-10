@@ -18,7 +18,9 @@ export default function SummaryList(props) {
     <div className="summary-list">
       <h4 className="heading4 medium-margin">{props.title}</h4>
       <table className="summary-table">
-        {items}
+        <tbody>
+          {items}
+        </tbody>
       </table>
     </div>
   );

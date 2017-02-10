@@ -17,3 +17,10 @@ CREATE TABLE "car" (
   saves INTEGER DEFAULT 0,
   shares INTEGER DEFAULT 0
 );
+
+CREATE TABLE Picture
+(
+  id SERIAL PRIMARY KEY,
+  path VARCHAR(100) NOT NULL,
+  car_id INT REFERENCES "car" (id)
+);
