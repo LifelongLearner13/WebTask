@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function SingleImage(props) {
   return (
-    <img src={'img/' + props.picture} />
+    <img src={props.picture} role="presentation" />
   );
 }
 

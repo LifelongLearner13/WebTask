@@ -22,12 +22,20 @@ export default class CarDetail extends React.Component {
   constructor(props) {
     super(props);
 
+    // Temporary until I fix my database mistake
+    const images = ['ford1.jpeg', 'ford2.jpeg', 'ford3.jpeg', 'ford4.jpeg', 'ford5.jpeg'];
+
     // Initial state
     this.state = {
       width: window.innerWidth,
       isLoading: true,
       car: {},
+      images,
+      largeImage: 'img/' + images[1],
     };
+
+    // Ensure this context for callback function
+    this.handlePictureClick = this.handlePictureClick.bind(this);
   }
 
   // Add listener to detect window resizing
@@ -69,8 +77,13 @@ export default class CarDetail extends React.Component {
     this.setState({ width: window.innerWidth });
   }
 
+  handlePictureClick(event) {
+    const picture = event.target.src;
+    this.setState({ largeImage: picture });
+  }
+
   render() {
-    const { width } = this.state;
+    const { width, isLoading, images, largeImage } = this.state;
     const isMobile = width <= 500;
 
     // Assign variables to make the JSX more readable
@@ -81,7 +94,6 @@ export default class CarDetail extends React.Component {
             saves, shares,
             cylinders, city_mpg,
             highway_mpg, engine } = this.state.car;
-    const images = ['ford1.jpeg', 'ford2.jpeg', 'ford3.jpeg', 'ford4.jpeg', 'ford5.jpeg'];
     const content = {
       Cylinders: cylinders,
       'City MPG': city_mpg,
@@ -89,7 +101,7 @@ export default class CarDetail extends React.Component {
       Engine: engine,
     };
 
-    if (this.state.isLoading) {
+    if (isLoading) {
       return <p>Loading...</p>;
     } else if (isMobile) {
       return (
@@ -108,6 +120,8 @@ export default class CarDetail extends React.Component {
           </Navbar>
           <ImageGallery
             images={images}
+            isClickable={!isMobile}
+            handlePictureClick={this.handlePictureClick}
           />
           <Summary
             itemNumber={itemNumber}
@@ -158,7 +172,7 @@ export default class CarDetail extends React.Component {
           </Navbar>
           <main>
             <SingleImage
-              picture="ford1.jpeg"
+              picture={largeImage}
             />
             <Summary
               itemNumber={itemNumber}
@@ -174,6 +188,8 @@ export default class CarDetail extends React.Component {
             />
             <ImageGallery
               images={images}
+              isClickable={!isMobile}
+              handlePictureClick={this.handlePictureClick}
             />
             <SummaryList
               title="Extrior"
