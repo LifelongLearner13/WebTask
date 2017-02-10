@@ -121,14 +121,14 @@ export default class CarDetail extends React.Component {
               />
             </ul>
           </Navbar>
-          <main className="clear">
+          <main className="clear row">
             <ImageGallery
               images={images}
               isClickable={!isMobile}
               handlePictureClick={this.handlePictureClick}
             />
             <Summary
-              itemNumber={itemNumber}
+              itemNumber={itemnumber}
               vin={vin}
               carName={carname}
               releaseYear={releaseyear}

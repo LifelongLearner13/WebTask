@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function Summary(props) {
   return (
-    <div className="summary">
-      <div className="col">
+    <div className="summary col">
+      <div>
         <h4 className="heading1">{props.carName}</h4>
         <h4 className="heading5">Year</h4>
         <h4 className="heading4">{props.releaseYear}</h4>
@@ -12,7 +12,7 @@ export default function Summary(props) {
         <h4 className="heading5">Mileage</h4>
         <h4 className="heading4">{props.mileage.replace(/\B(?=(\d{3})+(?!\d))/g, ',')} miles</h4>
       </div>
-      <div className="col-2">
+      <div className="col-margin">
         <h4 className="heading5 small-bottom-margin">Item Number: #{props.itemNumber} </h4>
         <h4 className="heading5">VIN: {props.vin}</h4>
         <h4 className="heading7">
@@ -29,12 +29,12 @@ export default function Summary(props) {
             <h4 className="heading5 small-bottom-margin">Views</h4>
             <h4 className="heading2 green-text">{props.views}</h4>
           </div>
-          <div>
+          <div className="no-mobile">
             <h4 className="heading5 small-bottom-margin no-mobile">Saves</h4>
             <h4 className="heading2 green-text">{props.saves}</h4>
           </div>
-          <div>
-            <h4 className="heading5 small-bottom-margin no-mobile">Shares</h4>
+          <div className="no-mobile">
+            <h4 className="heading5 small-bottom-margin">Shares</h4>
             <h4 className="heading2 green-text">{props.shares}</h4>
           </div>
         </div>
